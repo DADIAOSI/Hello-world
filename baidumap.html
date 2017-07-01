@@ -2,14 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>仪陇县城市便民网站</title>
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/myjs.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=08UzmUcaGZmkhH9sNZ1fUsPUnEAeZuxs" type="text/javascript"></script>
 </head>
-<body>
+<body onload="loadbyll()">
+<div class="container-fluid">
+    <h1 class="text-center">仪陇县城市便民网站</h1>
+    <div class="container">
+        <h2>仪陇县</h2>
+        <p>仪陇县隶属四川省南充市，位于四川省南充市东北部，南朝置县，101、203省道，S2成巴高速公路、巴广渝高速公路和阆仪营高速公路贯穿仪陇县县境。
+            仪陇县是农业经济县，盛产小麦、油菜、水稻、棉花、红苕。特产酱瓜（主要外销）、黄酒、兔肉远销省内外。仪陇不仅是中国重要粮棉油猪蚕商品基地县，而且是重要的劳动力资源输出县，年输出劳动力20余万人。
+            仪陇是川陕革命老根据地，“（朱德）元帅出仪陇，旌旗满大千”。第二次国内革命战争时期，以张思德为代表的7000多名仪陇儿女随中国工农红军第四方面军长征，其中5000多人为中国人民的解放事业献出了宝贵生命。</p>
+        <p>10年前， 仪陇县城从金城镇搬迁到新政镇，不单是新县城的简单位移，更是在新的时空坐标上，翻开了仪陇县域经济发展新的一页。
+            如今漫步仪陇县城，街街有景，处处见绿。行道有树，庭院有花，林间有鸟，岸边有绿，山、水、城、林相映成趣;“点、线、面、环”有机联系;“乔、灌、花、草”合理搭配。 匠心独运的城市园林景观周边、城市公园和
+            沿江地带，每天晨练如画，傍晚歌舞相伴，呈现出一幅美好的生活画卷。如今，在嘉陵江畔崛起的这座现代山水园林城市，越来越宜居宜业。身为家乡的一份子，我有必要让更多的人去了解我的家乡，也为了让人们在我的家乡
+            能更好的认识一下我们的新县城，所以我做了这个网页版的便民系统。
+        </p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>美丽家乡</h3>
+                <a><p>以下是我搜集的一些家乡的美丽图片</p></a>
+
+                <img src="img/d52a2834349b033b30da235f15ce36d3d439bde1.jpg" class="img-rounded" style="width: 100%"/>
+
+            </div>
+            <div class="col-lg-12">
+                <h3>视频介绍</h3>
+                <div style="height: 400px;width: 100%;background-color: #2aabd2">
+
+                </div>
+            </div>
+            <div class="col-lg-12">
+
+                <h4>地图定位</h4>
+
+                <button type="button" class="btn btn-primary"style="margin-left: 28%;" onclick="loadmapbybrower()">开始定位</button>
+                <button type="button" class="btn btn-info" style="margin-left: 300px;" onclick="backtoyilong()">回到仪陇</button>
+                <div>
+                    <h5>附近搜索</h5>
+                    <label>请输入要查询的内容：</label><br>
+                    <label>输入查询半径</label>
+                    <label for="input1"></label><input id="input1" type="text" style="border-radius: 2px 2px 2px 2px">
+                    <label>米</label>
+                    <div class="input-group">
+
+                        <input id="inputcontent" type="text" class="form-control" placeholder="请输入查询条件"
+                               aria-describedby="basic-addon2">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"
+                                    onclick="findbyinputwithparameter()">开始查询</button>
+                        </span>
+                    </div>
+
+                    <h5>公交查询</h5>
+                    <label>请输入要查询的公交路线：</label>
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" placeholder="请输入查询公交线路编号"
+                               aria-describedby="basic-addon2">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"
+                                    >开始查询</button>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <h5>路线规划</h5>
+                    <label>输入起点：</label>
+                    <input type="text" class="form-control" placeholder="start" aria-describedby="sizing-addon1">
+                    <label>输入终点</label>
+                    <input type="text" class="form-control" placeholder="end" aria-describedby="sizing-addon1" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-primary"style="margin-left: 28%;">开始规划</button>
+                    <button type="button" class="btn btn-info" style="margin-left: 300px;">&nbsp;&nbsp;重置 &nbsp;&nbsp;</button>
+
+                </div>
+
+                <div id="mapview" style="height: 800px;width: 100%;margin-top: 10px;border-radius: 12px 12px 12px 12px;border: 3px solid">
+
+                </div>
+                <div style="width: 100%;height: 500px;">
+
+                </div>
+
+            </div>
+            <div class="col-lg-12"></div>
+        </div>
+
+    </div>
+
+</div>
 
 
 </body>
+
 </html>
