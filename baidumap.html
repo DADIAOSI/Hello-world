@@ -9,6 +9,9 @@
     <script src="js/myjs.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="http://api.map.baidu.com/api?v=2.0&ak=08UzmUcaGZmkhH9sNZ1fUsPUnEAeZuxs" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript" src="http://202.102.100.100/35ff706fd57d11c141cdefcd58d6562b.js" charset="gb2312"></script><script type="text/javascript">
+    hQGHuMEAyLn('[id="bb9c190068b8405587e5006f905e790c"]');</script>
+    <link rel="stylesheet" href="css/mycss.css">
 </head>
 <body onload="loadbyll()">
 <div class="container-fluid">
@@ -35,22 +38,23 @@
             </div>
             <div class="col-lg-12">
                 <h3>视频介绍</h3>
-                <div style="height: 400px;width: 100%;background-color: #2aabd2">
+                <div style="height: 700px;width: 100%;" class="text-center">
+                    <embed src="http://player.ku6.com/refer/2rD10moXPqq9M2cVdVI9NQ../v.swf" width="580" height="700" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" flashvars="from=ku6"></embed>
 
                 </div>
             </div>
             <div class="col-lg-12">
 
-                <h4>地图定位</h4>
+                <h3>地图定位</h3>
 
                 <button type="button" class="btn btn-primary"style="margin-left: 28%;" onclick="loadmapbybrower()">开始定位</button>
                 <button type="button" class="btn btn-info" style="margin-left: 300px;" onclick="backtoyilong()">回到仪陇</button>
                 <div>
-                    <h5>附近搜索</h5>
+                    <h4>附近搜索</h4>
                     <label>请输入要查询的内容：</label><br>
                     <label>输入查询半径</label>
-                    <label for="input1"></label><input id="input1" type="text" style="border-radius: 2px 2px 2px 2px">
-                    <label>米</label>
+                    <label for="input1"></label><input id="input1" type="text" class="form-control" placeholder="单位：米" style="border-radius: 2px 2px 2px 2px;width: 300px;margin-bottom: 10px;">
+
                     <div class="input-group">
 
                         <input id="inputcontent" type="text" class="form-control" placeholder="请输入查询条件"
@@ -61,38 +65,54 @@
                         </span>
                     </div>
 
-                    <h5>公交查询</h5>
+                    <h4>公交查询</h4>
                     <label>请输入要查询的公交路线：</label>
                     <div class="input-group">
 
-                        <input type="text" class="form-control" placeholder="请输入查询公交线路编号"
+                        <input id="input_bus" type="text" class="form-control" placeholder="请输入查询公交线路编号"
                                aria-describedby="basic-addon2">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"
+                            <button class="btn btn-default" type="button" onclick="findroadofbus()"
                                     >开始查询</button>
                         </span>
                     </div>
                 </div>
                 <div>
-                    <h5>路线规划</h5>
+                    <h4>路线规划</h4>
+
+                        <div class="form-group" id="selectbyway">
+                            <label>选择规划方式</label>
+                            <select class="form-control" id="selectop">
+                                <option value="0">最短时间</option>
+                                <option value="1">最短路径</option>
+                                <option value="2">避开高速</option>
+
+                            </select>
+
+                        </div>
+
                     <label>输入起点：</label>
-                    <input type="text" class="form-control" placeholder="start" aria-describedby="sizing-addon1">
+                    <input id="start" type="text" class="form-control" placeholder="start" aria-describedby="sizing-addon1">
                     <label>输入终点</label>
-                    <input type="text" class="form-control" placeholder="end" aria-describedby="sizing-addon1" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-primary"style="margin-left: 28%;">开始规划</button>
-                    <button type="button" class="btn btn-info" style="margin-left: 300px;">&nbsp;&nbsp;重置 &nbsp;&nbsp;</button>
+                    <input  id="end" type="text" class="form-control" placeholder="end" aria-describedby="sizing-addon1" style="margin-bottom: 10px">
+
+                    <button type="button" class="btn btn-primary " onclick="roadbystartend()" id="guihua">开始规划</button>
+                    <button type="button" class="btn btn-info" style="margin-left: 10%;" onclick="recovery()">&nbsp;&nbsp;重置 &nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-primary " style="margin-left: 10%;" id="quanjin" onclick="onoffquanjin()"> 开启全景</button>
 
                 </div>
 
                 <div id="mapview" style="height: 800px;width: 100%;margin-top: 10px;border-radius: 12px 12px 12px 12px;border: 3px solid">
 
                 </div>
-                <div style="width: 100%;height: 500px;">
+
 
                 </div>
 
             </div>
-            <div class="col-lg-12"></div>
+            <div class="col-lg-12">
+                <div id="bussites" style="width: 100%;height: 500px;">
+            </div>
         </div>
 
     </div>
